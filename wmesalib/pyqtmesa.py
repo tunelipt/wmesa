@@ -137,7 +137,7 @@ class StepMove(QWidget):
         
         slider = sliders
         if text:
-            slider.setValue(float(text))
+            slider.setValue(int(float(text)))
         
     def changeValue(self, value, labels):
         """changeValue toma os valores dos *sliders* a cada alteracao feita e repassa para o texto
@@ -306,9 +306,9 @@ class Move(QWidget):
         slider = sliders
         if text:
             if text[0] == '-' and len(text) >= 2:
-                slider.setValue(-float(text[1:]))
+                slider.setValue(int(-float(text[1:])))
             elif text[0] != '-':
-                slider.setValue(float(text))
+                slider.setValue(int(float(text)))
     
     def changeValue(self, value, labels):
         """changeValue toma os valores dos *sliders* a cada alteracao feita e repassa para o texto

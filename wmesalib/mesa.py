@@ -16,8 +16,8 @@ class XException(Exception):
         return repr(self.value)
     
 class Robo:
-    def __init__(self, port = "\\\\.\\COM1", baudrate = 9600, bytesize = serial.EIGHTBITS, 
-                 parity = serial.PARITY_NONE, stopbits = serial.STOPBITS_ONE, passoMotor=28100000, passoEncoder=2492):
+    def __init__(self, port = "\\\\.\\COM3", baudrate = 9600, bytesize = serial.EIGHTBITS, 
+                 parity = serial.PARITY_NONE, stopbits = serial.STOPBITS_ONE, passoMotor=28100000, passoEncoder=29920):
         """Incializa a conexao com a porta serial
         
         Keyword arguments:
@@ -39,11 +39,11 @@ class Robo:
         
         
     def connect(self):
-        """Estabelece a conexao a partir do terminal e inicializa o canal pelo prompt do programa"""
+        """Estabelece a conexao a partir do terminal e inicializa o canal pelo prompt do programa""" 
         self.isconnected = True
         self.sendData("E")
         reply = self.get_reply()
-        seq = ["LD3", "MN", "OSC1", "FSB1", "A2", "V4", "ER1"]
+        seq = ["LD3", "MN", "OSC1", "FSB1", "A0.5", "V8", "ER1"] #MR=25000(default)
         for i in seq:
             self.sendData(i)
         self.step_encoder()        
@@ -74,7 +74,7 @@ class Robo:
         """Inicializa a movimentacao do robo verificando todos os eixos
         
         O parametro s define o comando incremental na linguagem X"""
-        x = int(x)
+        #x = int(x)
         step = self.step
         if not self.isconnected:
             raise XException("Python interface not connected")
@@ -224,4 +224,4 @@ class Robo:
 if __name__ == "__main__":
     print("Creating server ...")
     
-    mesaxmlrpc.start_server(ip = 'localhost', port = '8080', porta = 'COM1', baud = 9600, parity = 'N', stop = serial.STOPBITS_ONE)
+    mesaxmlrpc.start_server(ip = 'localhost', port = '8080', porta = 'COM3', baud = 9600, parity = 'N', stop = serial.STOPBITS_ONE)

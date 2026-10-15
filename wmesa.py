@@ -218,7 +218,7 @@ if __name__ == '__main__':
     parser.add_argument("-t", "--test", help="Interface teste da mesa giratória", action="store_true")
     parser.add_argument("-i", "--ip", help="Endereço IP do servidor XML-RPC", default="localhost")
     parser.add_argument("-p", "--port", help="Porta XML-RPC do servidor XML-RPC", default=9596, type=int)
-    parser.add_argument("-s", "--comport", help="Porta serial a ser utilizada", default="COM1")
+    parser.add_argument("-s", "--comport", help="Porta serial a ser utilizada", default="COM3")
     parser.add_argument("-n", "--serverless", help="Não inicie o servidor XML-RPC", action="store_true")
     parser.add_argument("-c", "--client", help="Criar interface para cliente de servidor XML-RPC", action="store_true")
     
